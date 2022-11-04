@@ -1,0 +1,5 @@
+entry: {artist/company, album/project, release date, role(s), link(s)}
+
+- Discography / Project Explorer
+-- Search / Filter bar
+-- 
