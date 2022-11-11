@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import "./sass/main.scss";
 
 type Args = 
 {
@@ -8,32 +8,39 @@ type Args =
 }
 
 
-export interface Props
+export interface SidebarProps
 {
     name: string;
     bitch?: number;
 }
 
-export interface State
+export interface SidebarState
 {
     date: Date;
 }
 
 
-class MotherFucker extends React.Component<Props, State>
+class Sidebar extends React.Component<SidebarProps, SidebarState>
 {
     //props: Readonly<Args>;
     timerID?: NodeJS.Timer;
 
-    constructor (props: Props)
+    constructor (props: SidebarProps)
     {
         super (props);
-        this.state = {date: new Date()};   
+        //this.state = {date: new Date()};   
     }
 
     render() : React.ReactNode 
     {
-        return <div>What's up, {this.props.name}? {this.props.bitch}, {this.state.date.toLocaleTimeString()}</div>;
+        const numbers = [1, 2, 3, 4];
+
+        const elems = numbers.map 
+        (
+            (x) => <li><a>{x}</a></li>
+        );
+
+        return <ul>{elems}</ul>;
     }
 
     componentDidMount() : void 
@@ -61,10 +68,43 @@ class MotherFucker extends React.Component<Props, State>
     
 }
 
+export interface EntryProps
+{
+    projectName: string,
+    employerName: string,
+    art: string,
+    description: string,
+    tags: string[],
+    socials: SocialProps[]
+}
+
+interface SocialProps
+{
+    url: string,
+    icon: string
+}
+
+export interface EntryState
+{
+    isFocused: boolean
+}
+
+class Entry extends React.Component<EntryProps, EntryState>
+{
+    constructor (props: EntryProps)
+    {
+        super (props);
+        this.state = {isFocused: false}
+    }
+}
+
+
 function App()
 {
   return (
-    <MotherFucker name = "bitch"/>
+    <section id="sidebar">
+        <Sidebar name = "bitch"/>
+    </section>
   );
 }
 
